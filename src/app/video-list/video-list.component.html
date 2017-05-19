@@ -1,0 +1,21 @@
+<h1>
+  {{ titleName }}
+</h1>
+<div>Date: {{todayDate|date:"MM-dd-yy"}}</div>
+<div>Date: {{todayDate|date:"short"}}</div>
+<div>Date: {{todayDate|date}}</div>
+<div>Date: {{todayDate}}</div>
+<div [innerHtml]='someItem2'></div>
+<div [innerHtml]='someItem1'></div>
+<div *ngFor='let item of videoList;let i = index'>
+  <br/>
+  <hr/>
+  <!-- <div>index :{{i+1}}</div> -->
+  <div><h1><a href="videos/{{item.id}}">{{item.title}}</a></h1></div>
+  <!-- <div>body :{{item.body}}</div> -->
+  <div >
+  <iframe width="560" height="315" [src]=getEmbedUrl(item)|safe frameborder="0" allowfullscreen *ngIf="item.embed!=null"></iframe>
+  </div>
+  <br/>
+  <hr/>
+</div>

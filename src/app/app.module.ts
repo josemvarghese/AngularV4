@@ -3,16 +3,34 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+/* Third party packages */
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+
+/* End third party packages */
+
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app.routing';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { HomeComponent } from './home/home.component';
+import { SafePipe } from './utility/safe.pipe';
+import { VideoListComponent } from './video-list/video-list.component';
+import { VideoDetailComponent } from './video-detail/video-detail.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SafePipe,
+    HomeComponent,
+    VideoListComponent,
+    VideoDetailComponent
   ],
   imports: [
     BrowserModule,
+    BsDropdownModule.forRoot(),
+    CarouselModule.forRoot(),
     FormsModule,
-    HttpModule
+    HttpModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
