@@ -4,22 +4,29 @@
      <div class="row">
       <div class="col-md-offset-3 col-md-6" >
         <carousel>
-          <slide>
+          <slide >
+            <a class='' #imageOne href='/videos/1' (click)='preventNormal($event,imageOne)'>
             <img class="img-main-carousel" src="assets/images/1.jpg" alt="First slide">
+            </a>
             <div class="carousel-caption">
               <h3>First slide label</h3>
               <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
             </div>
           </slide>
           <slide>
+            <a class='' #imageTwo href='/videos/2' (click)='preventNormal($event,imageTwo)'>
             <img class="img-main-carousel" src="assets/images/2.png" alt="Second slide">
+            </a>
             <div class="carousel-caption">
               <h3>Second slide label</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </div>
           </slide>
           <slide>
+            <a class='' #imageTwo href='/videos/3' (click)='preventNormal($event,imageTwo)'>
+
             <img class="img-main-carousel" src="assets/images/3.jpg" alt="Third slide">
+          </a>
             <div class="carousel-caption">
               <h3>Third slide label</h3>
               <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
