@@ -1,3 +1,12 @@
-<p>
-  <!-- video-detail works! -->
-</p>
+<div *ngIf="videoObj" >
+<!-- <iframe width="560" height="315" [src]=getEmbedUrl(item)|safe frameborder="0" allowfullscreen *ngIf="item.embed!=null"></iframe> -->
+      <div align="center">{{videoObj?.title}}</div>
+      <br/>
+      <div align="center">
+      <iframe width="560" height="315" [src]=getEmbedUrl(videoObj)|safe frameborder="0" allowfullscreen *ngIf="videoObj.embed!=null"></iframe>
+      </div>
+      <br/>
+      <div align="center">
+        <p>{{videoObj?.body}}<p>
+      </div>
+</div>
