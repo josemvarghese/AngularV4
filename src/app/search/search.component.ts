@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -9,15 +9,26 @@ import {Router} from '@angular/router';
 export class SearchComponent implements OnInit {
   hiddenValue = 'this is hidden value';
   constructor(private route:Router) { }
+  @Input()
+  passedQuery:string;
+
+
+  
+  searchQuery:string;
+
 
   ngOnInit() {
+    console.log(this.passedQuery);
+    if(this.passedQuery){
+      this.searchQuery=this.passedQuery;
+    }
   }
   submitQuery(event,formData){
     console.log(event);
     console.log(formData.value);
-    let query = formData.value['searchQuery'];
-    if(query){
-        this.route.navigate(['/search',{q:query}]);
+    let searchQuery = formData.value['searchQuery'];
+    if(searchQuery){
+        this.route.navigate(['/search',{q:searchQuery}]);
     }
   }
   searchQueryChange(){
