@@ -1,11 +1,13 @@
 import { Component, OnInit,OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {Http } from '@angular/http'
+// import {Http } from '@angular/http'
+import { VideoService } from '../videos/videos.service';
 
 @Component({
   selector: 'app-video-detail',
   templateUrl: './video-detail.component.html',
-  styleUrls: ['./video-detail.component.css']
+  styleUrls: ['./video-detail.component.css'],
+  providers:[VideoService]
 })
 export class VideoDetailComponent implements OnInit,OnDestroy {
   private routeSub:any;
@@ -15,7 +17,7 @@ export class VideoDetailComponent implements OnInit,OnDestroy {
   title:string;
   text:string;
 
-  constructor(private route:ActivatedRoute,private http:Http) { }
+  constructor(private route:ActivatedRoute,private _vedio:VideoService) { }
 
   ngOnInit() {
     this.routeSub = this.route.params.subscribe(params => {
@@ -23,13 +25,17 @@ export class VideoDetailComponent implements OnInit,OnDestroy {
       console.log(params.id);
       console.log(this.id);
       console.log(window);
-      this.request = this.http.get('assets/json/videos.json').subscribe(data=>{
-        data.json().vlist.filter(item=>{
-          // console.log(item);
-          if(item.id == this.id){
-            this.videoObj = item;
-          }
-        })
+      this.request = this._vedio.getInfo(this.id).subscribe(data=>{
+        console.log("details");
+        console.log(data);
+        this.videoObj = data[0];
+
+        // data.vlist.filter(item=>{
+        //   // console.log(item);
+        //   if(item.id == this.id){
+        //     this.videoObj = item;
+        //   }
+        // })
       })
 
     })

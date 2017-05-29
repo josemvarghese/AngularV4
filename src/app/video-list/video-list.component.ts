@@ -1,9 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import {Http } from '@angular/http'
+import { Http } from '@angular/http'
+import { VideoService } from '../videos/videos.service';
 @Component({
   selector: 'app-video-list',
   templateUrl: './video-list.component.html',
-  styleUrls: ['./video-list.component.css']
+  styleUrls: ['./video-list.component.css'],
+  providers:[VideoService]
 })
 export class VideoListComponent implements OnInit, OnDestroy {
     titleName = "videolist";
@@ -12,13 +14,13 @@ export class VideoListComponent implements OnInit, OnDestroy {
     todayDate;
     private request:any;
     videoList:[any];
-  constructor(private http:Http) { }
+  constructor(private http:Http,private _vedio:VideoService) { }
 
   ngOnInit() {
     this.todayDate = new Date();
-    this.request = this.http.get('assets/json/videos.json').subscribe(data=>{
-      console.log(data.json());
-      this.videoList = data.json().vlist;
+    this.request = this._vedio.list().subscribe(data=>{
+      console.log(data);
+      this.videoList = data.vlist;
     })
   }
   ngOnDestroy(){
