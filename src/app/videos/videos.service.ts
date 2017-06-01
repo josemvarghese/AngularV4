@@ -17,11 +17,32 @@ export class VideoService {
     getInfo(id){
       return this.http.get(endpoint)
               .map(response=>{
-
                 let data = response.json().vlist.filter(item=>{
                   // console.log(item);
                   if(item.id == id){
                     return item;
+                  }
+                })
+                console.log("service");
+                console.log(data);
+                return data;
+              })
+              .catch(this.handleError)
+    }
+    searchVideos(query){
+      let data = [];
+      
+      return this.http.get(endpoint)
+              .map(response=>{
+                console.log(query);
+                let req = response.json().vlist.filter(item=>{
+                // console.log("query");
+                // console.log(query);
+                console.log('title--'+item.title.indexOf(query));
+                  if(item.title.indexOf(query)>=0){
+                    console.log("inside query");
+                    console.log(query);
+                      data.push(item)
                   }
                 })
                 console.log("service");

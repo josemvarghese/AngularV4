@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Http } from '@angular/http'
 import { VideoService } from '../videos/videos.service';
 @Component({
   selector: 'app-video-list',
@@ -14,13 +13,13 @@ export class VideoListComponent implements OnInit, OnDestroy {
     todayDate;
     private request:any;
     videoList:[any];
-  constructor(private http:Http,private _vedio:VideoService) { }
+  constructor(private _vedio:VideoService) { }
 
   ngOnInit() {
     this.todayDate = new Date();
     this.request = this._vedio.list().subscribe(data=>{
       console.log(data);
-      this.videoList = data.vlist;
+      this.videoList = data.vlist as [any];
     })
   }
   ngOnDestroy(){

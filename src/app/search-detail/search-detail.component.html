@@ -2,3 +2,15 @@
         <!-- <search   [passedQuery]='query'></search> -->
 </div>
 <div align='center' class="col-md-12"> <span *ngIf='query'>search for  </span> {{query}}</div>
+<div *ngFor='let item of videoList;let i = index'>
+  <br/>
+  <hr/>
+  <!-- <div>index :{{i+1}}</div> -->
+  <div><h1><a href="videos/{{item.id}}">{{item.title}}</a></h1></div>
+  <!-- <div>body :{{item.body}}</div> -->
+  <div >
+  <iframe width="560" height="315" [src]=getEmbedUrl(item)|safe frameborder="0" allowfullscreen *ngIf="item.embed!=null"></iframe>
+  </div>
+  <br/>
+  <hr/>
+</div>
