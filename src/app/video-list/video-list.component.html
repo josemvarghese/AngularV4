@@ -7,15 +7,15 @@
 <div>Date: {{todayDate}}</div>
 <div [innerHtml]='someItem2'></div>
 <div [innerHtml]='someItem1'></div>
-<div *ngFor='let item of videoList;let i = index'>
+<div *ngFor='let item of videoList;let i = index' [ngClass]="{'well':(i+1)%2==0}">
   <br/>
-  <hr/>
+  <!-- <hr/> -->
   <!-- <div>index :{{i+1}}</div> -->
-  <div><h1><a href="videos/{{item.id}}">{{item.title}}</a></h1></div>
+  <div align="center"><h1><a href="videos/{{item.id}}">{{item.title}}</a></h1></div>
   <!-- <div>body :{{item.body}}</div> -->
-  <div >
+  <div align="center">
   <iframe width="560" height="315" [src]=getEmbedUrl(item)|safe frameborder="0" allowfullscreen *ngIf="item.embed!=null"></iframe>
   </div>
   <br/>
-  <hr/>
+  <!-- <hr/> -->
 </div>
