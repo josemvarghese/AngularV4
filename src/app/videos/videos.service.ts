@@ -25,13 +25,13 @@ export class VideoService {
                 })
                 console.log("service");
                 console.log(data);
-                return data;
+                return data[0];
               })
               .catch(this.handleError)
     }
     searchVideos(query){
       let data = [];
-      
+
       return this.http.get(endpoint)
               .map(response=>{
                 console.log(query);

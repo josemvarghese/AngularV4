@@ -1,6 +1,7 @@
 import { Component, OnInit,OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 // import {Http } from '@angular/http'
+import { VideoItem } from '../videos/video';
 import { VideoService } from '../videos/videos.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class VideoDetailComponent implements OnInit,OnDestroy {
   private routeSub:any;
   id:number;
   private request:any;
-  videoObj:any;
+  videoObj:VideoItem;
   title:string;
   text:string;
 
@@ -28,7 +29,7 @@ export class VideoDetailComponent implements OnInit,OnDestroy {
       this.request = this._vedio.getInfo(this.id).subscribe(data=>{
         console.log("details");
         console.log(data);
-        this.videoObj = data[0];
+        this.videoObj = data as VideoItem;
 
         // data.vlist.filter(item=>{
         //   // console.log(item);
